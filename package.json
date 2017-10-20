@@ -1,0 +1,11 @@
+{
+  "name": "scroll",
+  "version": "1.0.1",
+  "description": "滚动条插件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wanglizhe",
+  "license": "MIT"
+}

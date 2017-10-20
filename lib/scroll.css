@@ -1,0 +1,49 @@
+.__wlzScroll{
+	display: block;
+	line-height: 1;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.__wlzScroll_bar{
+	position: absolute;
+	display: block;
+	overflow: hidden;
+	bottom:2px;
+	right: 2px;
+	z-index: 1;
+	cursor: pointer;
+	opacity: 0;
+	
+}
+
+.__wlzScroll_bar_h {
+	left: 2px;
+	height: 6px;
+}
+.__wlzScroll_bar_v{
+	top: 2px;
+	width: 6px;
+}
+
+
+.__wlzScroll_bar .__wlzScroll_bar_thumb{
+	background-color: rgba(151,168,190,.3);
+	display: block;
+	border-radius: 6px;
+	position: absolute;
+}
+.__wlzScroll_bar .__wlzScroll_bar_thumb:hover{
+	background-color: rgba(151,168,190,.5);
+}
+
+
+.__wlzScroll_bar_h .__wlzScroll_bar_thumb{
+	height: 100%;
+	width:0px;
+	left: 0;bottom: 0;
+}
+.__wlzScroll_bar_v .__wlzScroll_bar_thumb{
+	width: 100%;
+	height:0px;
+	right: 0;top: 0;
+}

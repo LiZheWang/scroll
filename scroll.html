@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="lib/scroll.css"/>
+		<title>scroll</title>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<style type="text/css">
+			.box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ddd;
+				overflow: hidden;
+				line-height: 1.2;
+				position: relative;
+			}
+			.box p{
+				/*width: 350px;*/
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+		<div style="height: 60px;"></div>
+		
+		<div id="box" class="box">
+			<p>----start-----</p>
+			<p>88888888888888</p>
+			
+			<p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p>
+			<p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p>
+			<p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p><p class="re">123</p>
+			
+			<p>----end-----</p>
+		</div>
+		</div>
+		
+		
+		<div style="height: 40px;"></div>
+		<button id="btn1">添加文字</button>
+		<button id="btn2">删除</button>
+		<button id="btn3">滚动到最底部</button>
+		<button id="btn4">滚动到最顶部</button>
+		<button id="btn5">移动到100的位置</button>
+		<button id="btn6">移动到300的位置</button>
+		<button id="btn7">窗口变大</button>
+		<button id="btn8">窗口变小</button>
+		<button id="btn9">停用</button>
+		<button id="btn10">启用</button>
+		<button id="btn11">滚动条复位</button>
+		
+		
+		
+		<div style="height: 1200px;"></div>
+		
+		<script src="lib/scroll.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		
+		<script type="text/javascript">
+			var box = document.getElementById("box") ;
+			var res = document.getElementsByClassName("re") ;
+			var scroll = new WlzScroll(box,{
+				scroll : function(dist,dir){
+					console.log(dist + "==>" + dir);
+				},
+				start : function(dir){
+					console.log("start::" + dir);
+				},
+				end : function(dir){
+					console.log("end::" + dir);
+				}
+			});
+			
+			
+			
+			var scrollCon = scroll.getScroll() ;
+			
+			var btn1 = document.getElementById("btn1");
+			var btn2 = document.getElementById("btn2");
+			var btn3 = document.getElementById("btn3");
+			var btn4 = document.getElementById("btn4");
+			var btn5 = document.getElementById("btn5");
+			var btn6 = document.getElementById("btn6");
+			var btn7 = document.getElementById("btn7");
+			var btn8 = document.getElementById("btn8");
+			var btn9 = document.getElementById("btn9");
+			var btn10 = document.getElementById("btn10");
+			var btn11 = document.getElementById("btn11");
+			btn1.onclick = function(){
+				scrollCon.innerHTML = scrollCon.innerHTML += '<p class="re">我是新加的</p>';
+				scroll.update();
+			}
+			btn2.onclick = function(){
+				$(".re").remove();
+				scroll.update();
+			}
+			btn3.onclick = function(){
+				scroll.scrollToEnd();
+			}
+			btn4.onclick = function(){
+				scroll.scrollToStart();
+			}
+			btn5.onclick = function(){
+				scroll.scrollTo(100);
+			}
+			btn6.onclick = function(){
+				scroll.scrollTo(300);
+			}
+			btn7.onclick = function(){
+				box.style.width="400px" ;
+				box.style.height="600px" ;
+				scroll.restore();
+			}
+			btn8.onclick = function(){
+				box.style.width="200px" ;
+				box.style.height="200px" ;
+				scroll.restore();
+			}
+			btn9.onclick = function(){
+				scroll.disabled();
+			}
+			btn10.onclick = function(){
+				scroll.enabled();
+			}
+			btn11.onclick = function(){
+				scroll.restore();
+			}
+			
+		</script>
+	</body>
+</html>
