@@ -1,5 +1,20 @@
-(function(){
+(function(fn){
+	var isModule = false ;
+	if( typeof define === "function" && define.amd ){
+		define(fn) ;
+		isModule = true ;
+	}
+	if( typeof exports === 'object' ) {
+		module.exports =  fn() ;
+		isModule = true ;
+	}
+	if( !isModule ){
+		window.WlzScroll = fn() ;
+	}else{
+		require("scroll.css");
+	}
 	
+})(function(){
 	var tool = {
 		isok : function(cb){
 			if( !Array.prototype.forEach){
@@ -359,19 +374,7 @@
 	}
 	
 	
-	
-	
-	if( typeof module == "object" && typeof exports == "object" ){
-		module.exports = WlzScroll ;
-	}else if( typeof define == "function" && define.amd ){
-		define(function(){ return WlzScroll }) ;
-	}else{
-		try{
-			
-		}catch(e){
-			window.WlzScroll = WlzScroll ;
-		}
-	}
-	window.WlzScroll = WlzScroll ;
-})();
+	return WlzScroll ;
+});
+
 

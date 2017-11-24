@@ -1,8 +1,8 @@
 {
-  "name": "scroll",
-  "version": "1.0.1",
+  "name": "wlz-scroll",
+  "version": "1.0.2",
   "description": "滚动条插件",
-  "main": "index.js",
+  "main": "scroll.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
