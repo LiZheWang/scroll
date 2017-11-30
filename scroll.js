@@ -11,7 +11,7 @@
 	if( !isModule ){
 		window.WlzScroll = fn() ;
 	}else{
-		require("scroll.css");
+		require("./scroll.css");
 	}
 	
 })(function(){
@@ -24,8 +24,8 @@
 			cb && cb();
 			return true ;
 		},
-		addEvent : function(elem,type,fn){elem.addEventListener(type,fn,false);},
-		removeEvent : function(elem,type,fn){elem.removeEventListener(type,fn,false);},
+		addEvent : function(elem,type,fn){ elem &&  elem.addEventListener(type,fn,false);},
+		removeEvent : function(elem,type,fn){elem && elem.removeEventListener(type,fn,false);},
 		extend : function(s,d){for( var p in d ){s[p] = d[p] ;} return s;} ,
 		requestAnimationFrame : function(){ 
 			return window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; 
@@ -105,14 +105,18 @@
 			tool.css(this.elem,{position:"relative",overflow:"hidden"});
 			var elemHtml = this.elem.innerHTML ;
 			
-			var html = 	'<div class="__wlzScroll" id="__wlzScroll">'+elemHtml+'</div>'+
-						'<div class="__wlzScroll_bar __wlzScroll_bar_h" id="__wlzScroll_bar_h">'+
-							'<div class="__wlzScroll_bar_thumb" id="__wlzScroll_bar_thumb_h"></div>'+
-						'</div>'+
-						'<div class="__wlzScroll_bar __wlzScroll_bar_v" id="__wlzScroll_bar_v">'+
-							'<div class="__wlzScroll_bar_thumb" id="__wlzScroll_bar_thumb_v"></div>'+
-						'</div>';
-			this.elem.innerHTML = html ;
+			var hb = document.createElement("div") ;
+			hb.className ="__wlzScroll_bar __wlzScroll_bar_h" ;
+			hb.id="__wlzScroll_bar_h" ;
+			hb.innerHTML = '<div class="__wlzScroll_bar_thumb" id="__wlzScroll_bar_thumb_h"></div>';
+			
+			var vb = document.createElement("div") ; 
+			vb.className = "__wlzScroll_bar __wlzScroll_bar_v" ;
+			vb.id = "__wlzScroll_bar_v" ;
+			vb.innerHTML = '<div class="__wlzScroll_bar_thumb" id="__wlzScroll_bar_thumb_v"></div>' ;
+			
+			this.elem.appendChild(hb);
+			this.elem.appendChild(vb);
 		},
 		
 		__getParams : function(){

@@ -1,6 +1,6 @@
 {
   "name": "wlz-scroll",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "滚动条插件",
   "main": "scroll.js",
   "scripts": {
